@@ -1,10 +1,8 @@
 import speech_recognition as sr
-import pyaudio as pa
 import json
-import os
 import Counter as counter
 import Searching
-
+import AudioPlayer as audio_player
 class AutoAudiosWriter:
     @staticmethod
     def autoAudiosWritter(): 
@@ -41,6 +39,8 @@ class AutoAudiosWriter:
         with open('contador.json', 'w') as arquivo_contador:
             json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
 
-        print(Searching.Searching.wikipedia_search(nome_arquivo))
+        wiki_pesquisa = Searching.Searching.wikipedia_search(nome_arquivo)
+        wiki_pesquisa = " ".join(wiki_pesquisa)
+        audio_player.AudioPlayer.reproduzir_audio(f"arquivo{contador['contador']}", wiki_pesquisa)
 
 AutoAudiosWriter.criar_bloco_de_notas()
