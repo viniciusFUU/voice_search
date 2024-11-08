@@ -2,18 +2,20 @@ import speech_recognition as sr
 import pyaudio as pa
 import json
 import os
+import Counter as counter
+import Searching
 
-class primeiro_projeto_pessoal:
+class AutoAudiosWriter:
     @staticmethod
     def autoAudiosWritter(): 
         recognizer = sr.Recognizer()
 
         with sr.Microphone() as source:
+            print("Escutando audio")
             audio_data = recognizer.listen(source)
-
         try:
             text = recognizer.recognize_google(audio_data, language='pt-br')
-            return f"Você falou: {text}"
+            return text
         except sr.UnknownValueError:
             print("Could not understand the audio")
         except sr.RequestError:
@@ -21,7 +23,7 @@ class primeiro_projeto_pessoal:
 
     @classmethod
     def criar_bloco_de_notas(cls):
-        cls.contador_zero()
+        counter.counter.contador_zero()
 
         with open('contador.json', 'r') as contador:
             contador = json.load(contador)
@@ -39,24 +41,6 @@ class primeiro_projeto_pessoal:
         with open('contador.json', 'w') as arquivo_contador:
             json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
 
-    @classmethod
-    def contador_zero(cls):
-        contador_arquivos = 0
-        
-        with open('contador.json', 'r') as contador:
-            contador = json.load(contador)
+        print(Searching.Searching.wikipedia_search(nome_arquivo))
 
-        for arquivo in os.listdir():
-            if arquivo.endswith('.txt'):
-                contador_arquivos+=1
-
-        if contador_arquivos == 0:
-            contador['contador'] = 0
-
-        with open('contador.json', 'w') as arquivo_contador:
-            json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
-        
-        if contador_arquivos > 0:
-            print(f"Existe {contador_arquivos} arquivos .txt.")
-
-primeiro_projeto_pessoal.criar_bloco_de_notas()
+AutoAudiosWriter.criar_bloco_de_notas()
