@@ -3,6 +3,8 @@ import json
 import Counter as counter
 import Searching
 import AudioPlayer as audio_player
+import os
+
 class AutoAudiosWriter:
     @staticmethod
     def autoAudiosWritter(): 
@@ -29,7 +31,9 @@ class AutoAudiosWriter:
         nome_arquivo = f"arquivo{contador['contador']}.txt"
         texto = cls.autoAudiosWritter()
 
-        with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:
+        caminho_completo = os.path.join('textos', nome_arquivo)
+
+        with open(caminho_completo, 'w', encoding='utf-8') as arquivo:
             arquivo.write(texto)
         
         print("Documento criado com sucesso.")
