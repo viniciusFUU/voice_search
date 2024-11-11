@@ -5,9 +5,10 @@ class counter:
     @classmethod
     def contador_zero(cls):
         contador_arquivos = 0
-        lista_de_textos = os.path.join('textos')
+        lista_de_textos = os.path.join('Backend','textos')
+        caminho_contador = os.path.join('Backend', 'contador.json')
         
-        with open('contador.json', 'r') as contador:
+        with open(caminho_contador, 'r') as contador:
             contador = json.load(contador)
 
         for arquivo in os.listdir(lista_de_textos):
