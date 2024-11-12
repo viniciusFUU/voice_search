@@ -42,9 +42,7 @@ class AutoAudiosWriter:
         print("Documento criado com sucesso.")
 
         with open(caminho_contador, 'w') as arquivo_contador:
-            print(contador)
             contador['contador']+=1
-            print(contador)
             json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
 
         wiki_pesquisa = Searching.Searching.wikipedia_search(f"{nome_arquivo}.txt")
