@@ -47,6 +47,6 @@ class AutoAudiosWriter:
 
         wiki_pesquisa = Searching.Searching.wikipedia_search(f"{nome_arquivo}.txt")
         wiki_pesquisa = " ".join(wiki_pesquisa)
-        audio_player.AudioPlayer.reproduzir_audio(nome_arquivo, wiki_pesquisa)
+        audio_player.AudioPlayer.gerar_e_reproduzir_audio(nome_arquivo, wiki_pesquisa)
 
 AutoAudiosWriter.criar_bloco_de_notas()
