@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import tkinter as tk
 from tkinter import ttk, messagebox, Message
-from Backend import Audios_controller, Textos_controller, Pesquisas_controller, AudioPlayer
+from Backend import Audios_controller, Textos_controller, Pesquisas_controller, AudioPlayer, AutoAudiosWriter
 
 root = tk.Tk()
 
@@ -28,6 +28,7 @@ class Application:
 
         self.combo_box_textos()
         self.combo_box_audios()
+        self.funcao_principal_do_projeto()
 
     def combo_box_textos(self):
         
@@ -82,5 +83,20 @@ class Application:
                 messagebox.showinfo("Erro: ", "Nenhum elemento selecionado")
 
         tk.Button(root, text="Escutar audio", command=abrir_audio).grid(row=6, column=1, pady=(0,5), ipadx=31)
+
+    def funcao_principal_do_projeto(self):
+        ttk.Label(
+                root,
+                text="Busca por Audio",
+                anchor='center',
+                background='#157a8c',
+                foreground='white',
+                font = ("Times New Roman", 15) 
+            ).grid(row = 1, column = 3, pady=(5, 0))
+        
+        def busca_por_audio():
+            AutoAudiosWriter.AutoAudiosWriter.criar_bloco_de_notas()
+
+        tk.Button(root, text="Buscar por Audio", command=busca_por_audio).grid(row=7, column=3, pady=(0,5), ipadx=31)
 
 Application()
