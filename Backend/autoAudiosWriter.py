@@ -32,7 +32,7 @@ class AutoAudiosWriter:
         nome_arquivo = f"arquivo{contador['contador']}"
         print(nome_arquivo)
         # texto = cls.autoAudiosWritter()
-        texto = "corinthians"
+        texto = "egito"
 
         caminho_completo = os.path.join('Backend', 'textos', f"{nome_arquivo}.txt")
 

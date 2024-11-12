@@ -5,6 +5,7 @@ class counter:
     @classmethod
     def contador_zero(cls):
         contador_arquivos = 0
+        print(f"contador de arquivos: {contador_arquivos}")
         lista_de_textos = os.path.join('Backend','textos')
         caminho_contador = os.path.join('Backend', 'contador.json')
         
@@ -18,7 +19,7 @@ class counter:
         if contador_arquivos == 0:
             contador['contador'] = 0
 
-        with open('contador.json', 'w') as arquivo_contador:
+        with open(caminho_contador, 'w') as arquivo_contador:
             json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
         
         if contador_arquivos > 0:
