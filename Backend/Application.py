@@ -28,7 +28,8 @@ class Application:
 
         self.combo_box_textos()
         self.combo_box_audios()
-        self.funcao_principal_do_projeto()
+        self.funcao_principal_do_projeto_por_audio()
+        self.funcao_principal_do_projeto_por_texto()
 
     def combo_box_textos(self):
         
@@ -84,7 +85,7 @@ class Application:
 
         tk.Button(root, text="Escutar audio", command=abrir_audio).grid(row=6, column=1, pady=(0,5), ipadx=31)
 
-    def funcao_principal_do_projeto(self):
+    def funcao_principal_do_projeto_por_audio(self):
         ttk.Label(
                 root,
                 text="Busca por Audio",
@@ -94,6 +95,26 @@ class Application:
                 font=("Times New Roman", 15)
             ).grid(row=1, column=3, pady=(10, 0))
 
-        tk.Button(root, text="Buscar por Audio", command=autoAudiosWriter.AutoAudiosWriter.criar_bloco_de_notas).grid(row=2, column=3, pady=(5,5), ipadx=31)
+        tk.Button(root, text="Buscar por Audio", command=autoAudiosWriter.AutoAudiosWriter.pesquisa_por_voz).grid(row=2, column=3, pady=(5,5), ipadx=31)
+
+    def funcao_principal_do_projeto_por_texto(self):
+        ttk.Label(
+                root,
+                text="Busca por Texto",
+                anchor='center',
+                background='#157a8c',
+                foreground='white',
+                font=("Times New Roman", 15)
+            ).grid(row=3, column=3, pady=(10, 0))
+        
+        entrada = tk.Entry()
+        entrada.grid(row=4, column=3)
+
+        def busca_por_entrada():
+            texto = entrada.get()
+            autoAudiosWriter.AutoAudiosWriter.pesquisa_por_texto(texto)
+
+        tk.Button(root, text="Buscar por Audio", command=busca_por_entrada).grid(row=5, column=3, pady=(5,5), ipadx=31)
+
 
 Application()
