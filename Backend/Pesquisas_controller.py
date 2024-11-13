@@ -17,6 +17,6 @@ class Pesquisas_controller:
         for pesquisa in os.listdir(cls.caminho_pesquisa):
             if pesquisa == texto:
                 caminho_arquivo = os.path.join(cls.caminho_pesquisa, pesquisa)
-                with open(caminho_arquivo, 'r') as p:
+                with open(caminho_arquivo, 'r', encoding='utf-8') as p:
                     conteudo = p.read()
                 return conteudo

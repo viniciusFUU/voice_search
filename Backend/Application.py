@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import tkinter as tk
 from tkinter import ttk, messagebox
-from Backend import Audios_controller, Pesquisas_controller, AudioPlayer, autoAudiosWriter
+import Audios_controller, Pesquisas_controller, AudioPlayer, autoAudiosWriter
 
 root = tk.Tk()
 
