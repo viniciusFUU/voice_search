@@ -15,11 +15,11 @@ class Application:
         root.mainloop()
 
     def tela(self):
-        root.title('programa')
+        root.title('1st version')
         root.config(background='#003f69')
 
-        largura = 1000
-        altura = 650
+        largura = 400
+        altura = 400
 
         posicao_x = (root.winfo_screenwidth() - largura) // 2
         posicao_y = (root.winfo_screenheight() - altura) // 2
@@ -40,15 +40,13 @@ class Application:
                 background = '#157a8c', 
                 foreground ="white",  
                 font = ("Times New Roman", 15)
-                ).grid(row = 1, column = 1, pady=(10, 0), ipadx=31) 
+                ).grid(row = 1, column = 1, padx=(130,0), pady=(10, 0), ipadx=31) 
         
         opcoes = PesquisasController.PesquisasController.listar_arquivos()
 
         combobox = ttk.Combobox(root, values=opcoes)
         combobox.set("Escolha uma opção")
-        combobox.grid(row=2, column=1, padx=10, pady=5)
-
-        tk.Button(root, text="Abrir texto").grid(row=3, column=1, pady=(0,5), ipadx=38)
+        combobox.grid(row=2, column=1, padx=(130,0), pady=5)
 
         def abrir_texto():
             valor_escolhido = combobox.get()  
@@ -57,7 +55,7 @@ class Application:
             else:
                 messagebox.showinfo('Erro: ', "Nenhum elemento selecionado")            
 
-        tk.Button(root, text="Abrir texto", command=abrir_texto).grid(row=3, column=1, pady=(0,5), ipadx=38)
+        tk.Button(root, text="Abrir texto", command=abrir_texto).grid(row=3, column=1, padx=(130,0), pady=(0,5), ipadx=38)
 
     def combo_box_audios(self):
         ttk.Label(
@@ -67,13 +65,13 @@ class Application:
                 background = '#157a8c', 
                 foreground ="white",  
                 font = ("Times New Roman", 15)
-                ).grid(row = 4, column = 1, pady=(5, 0), ipadx=41) 
+                ).grid(row = 4, column = 1, padx=(130,0), pady=(5, 0), ipadx=41) 
         
         opcoes = AudiosController.AudiosController.adc_audios_lista()
 
         combobox = ttk.Combobox(root, values=opcoes)
         combobox.set("Escolha uma opção")
-        combobox.grid(row=5, column=1, padx=10, pady=5)
+        combobox.grid(row=5, column=1, padx=(130,0), pady=5)
 
         def abrir_audio():
             valor_escolhido = combobox.get()
@@ -83,7 +81,7 @@ class Application:
             else:
                 messagebox.showinfo("Erro: ", "Nenhum elemento selecionado")
 
-        tk.Button(root, text="Escutar audio", command=abrir_audio).grid(row=6, column=1, pady=(0,5), ipadx=31)
+        tk.Button(root, text="Escutar audio", command=abrir_audio).grid(row=6, column=1, padx=(130,0), pady=(0,5), ipadx=31)
 
     def funcao_principal_do_projeto_por_audio(self):
         ttk.Label(
@@ -93,9 +91,9 @@ class Application:
                 background='#157a8c',
                 foreground='white',
                 font=("Times New Roman", 15)
-            ).grid(row=1, column=3, pady=(10, 0))
+            ).grid(row=7, column=1, padx=(130,0), pady=(10, 0), ipadx=4)
 
-        tk.Button(root, text="Buscar por Audio", command=AutoAudiosWriter.AutoAudiosWriter.pesquisa_por_voz).grid(row=2, column=3, pady=(5,5), ipadx=31)
+        tk.Button(root, text="Buscar por Audio", command=AutoAudiosWriter.AutoAudiosWriter.pesquisa_por_voz).grid(row=8, column=1, padx=(130,0), pady=(5,5), ipadx=22)
 
     def funcao_principal_do_projeto_por_texto(self):
         ttk.Label(
@@ -105,16 +103,15 @@ class Application:
                 background='#157a8c',
                 foreground='white',
                 font=("Times New Roman", 15)
-            ).grid(row=3, column=3, pady=(10, 0))
+            ).grid(row=9, column=1, padx=(130,0), pady=(10, 0), ipadx=6)
         
         entrada = tk.Entry()
-        entrada.grid(row=4, column=3)
+        entrada.grid(row=10, column=1, padx=(130,0), ipadx=10, pady=(2,0))
 
         def busca_por_entrada():
             texto = entrada.get()
             AutoAudiosWriter.AutoAudiosWriter.pesquisa_por_texto(texto)
 
-        tk.Button(root, text="Buscar por Audio", command=busca_por_entrada).grid(row=5, column=3, pady=(5,5), ipadx=31)
-
+        tk.Button(root, text="Buscar por Audio", command=busca_por_entrada).grid(row=11, column=1, padx=(130,0), pady=(5,5), ipadx=21)
 
 Application()
