@@ -29,10 +29,10 @@ class AutoAudiosWriter:
         with open(caminho_contador, 'r', encoding='utf-8') as contador:
             contador = json.load(contador)
         
-        nome_arquivo = f"arquivo{contador['contador']}"
-        print(f"nome do arquivo: {nome_arquivo}")
         # texto = cls.autoAudiosWritter()
-        texto = "egito"
+        texto = "computador"
+        nome_arquivo = texto
+        print(f"nome do arquivo: {nome_arquivo}")
 
         caminho_completo = os.path.join('Backend', 'textos', f"{nome_arquivo}.txt")
 
