@@ -4,8 +4,8 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import tkinter as tk
-from tkinter import ttk, messagebox, Message
-from Backend import Audios_controller, Textos_controller, Pesquisas_controller, AudioPlayer, AutoAudiosWriter
+from tkinter import ttk, messagebox
+from Backend import Audios_controller, Pesquisas_controller, AudioPlayer, autoAudiosWriter
 
 root = tk.Tk()
 
@@ -91,12 +91,9 @@ class Application:
                 anchor='center',
                 background='#157a8c',
                 foreground='white',
-                font = ("Times New Roman", 15) 
-            ).grid(row = 1, column = 3, pady=(5, 0))
-        
-        def busca_por_audio():
-            AutoAudiosWriter.AutoAudiosWriter.criar_bloco_de_notas()
+                font=("Times New Roman", 15)
+            ).grid(row=1, column=3, pady=(10, 0))
 
-        tk.Button(root, text="Buscar por Audio", command=busca_por_audio).grid(row=7, column=3, pady=(0,5), ipadx=31)
+        tk.Button(root, text="Buscar por Audio", command=autoAudiosWriter.AutoAudiosWriter.criar_bloco_de_notas).grid(row=2, column=3, pady=(5,5), ipadx=31)
 
 Application()
