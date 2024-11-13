@@ -30,7 +30,6 @@ class AutoAudiosWriter:
             contador = json.load(contador)
         
         texto = cls.autoAudiosWritter()
-        # texto = "computador"
 
         nome_arquivo = texto
         print(f"nome do arquivo: {nome_arquivo}")
