@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import tkinter as tk
 from tkinter import ttk, messagebox
-import Audios_controller, Pesquisas_controller, AudioPlayer, autoAudiosWriter
+import AudiosController, Backend.PesquisasController as PesquisasController, AudioPlayer, AutoAudiosWriter
 
 root = tk.Tk()
 
@@ -16,7 +16,7 @@ class Application:
 
     def tela(self):
         root.title('programa')
-        root.config(background='#260d33')
+        root.config(background='#003f69')
 
         largura = 1000
         altura = 650
@@ -42,7 +42,7 @@ class Application:
                 font = ("Times New Roman", 15)
                 ).grid(row = 1, column = 1, pady=(10, 0), ipadx=31) 
         
-        opcoes = Pesquisas_controller.Pesquisas_controller.listar_arquivos()
+        opcoes = PesquisasController.PesquisasController.listar_arquivos()
 
         combobox = ttk.Combobox(root, values=opcoes)
         combobox.set("Escolha uma opção")
@@ -53,7 +53,7 @@ class Application:
         def abrir_texto():
             valor_escolhido = combobox.get()  
             if valor_escolhido != "Escolha uma opção":
-                messagebox.showinfo('Conteudo encontrado',Pesquisas_controller.Pesquisas_controller.busca_pesquisa(valor_escolhido))
+                messagebox.showinfo('Conteudo encontrado',PesquisasController.Pesquisas_controller.busca_pesquisa(valor_escolhido))
             else:
                 messagebox.showinfo('Erro: ', "Nenhum elemento selecionado")            
 
@@ -69,7 +69,7 @@ class Application:
                 font = ("Times New Roman", 15)
                 ).grid(row = 4, column = 1, pady=(5, 0), ipadx=41) 
         
-        opcoes = Audios_controller.Audios_controller.adc_audios_lista()
+        opcoes = AudiosController.AudiosController.adc_audios_lista()
 
         combobox = ttk.Combobox(root, values=opcoes)
         combobox.set("Escolha uma opção")
@@ -95,7 +95,7 @@ class Application:
                 font=("Times New Roman", 15)
             ).grid(row=1, column=3, pady=(10, 0))
 
-        tk.Button(root, text="Buscar por Audio", command=autoAudiosWriter.AutoAudiosWriter.pesquisa_por_voz).grid(row=2, column=3, pady=(5,5), ipadx=31)
+        tk.Button(root, text="Buscar por Audio", command=AutoAudiosWriter.AutoAudiosWriter.pesquisa_por_voz).grid(row=2, column=3, pady=(5,5), ipadx=31)
 
     def funcao_principal_do_projeto_por_texto(self):
         ttk.Label(
@@ -112,7 +112,7 @@ class Application:
 
         def busca_por_entrada():
             texto = entrada.get()
-            autoAudiosWriter.AutoAudiosWriter.pesquisa_por_texto(texto)
+            AutoAudiosWriter.AutoAudiosWriter.pesquisa_por_texto(texto)
 
         tk.Button(root, text="Buscar por Audio", command=busca_por_entrada).grid(row=5, column=3, pady=(5,5), ipadx=31)
 

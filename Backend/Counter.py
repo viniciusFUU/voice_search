@@ -1,6 +1,6 @@
 import json
 import os
-import Textos_controller
+import Backend.TextosController as TextosController
 
 class counter:
     @classmethod
@@ -8,7 +8,7 @@ class counter:
         contador_arquivos = 0
         print(f"contador de arquivos: {contador_arquivos}")
         lista_de_textos = os.path.join('Backend','textos')
-        Textos_controller.Textos_controller.verificacao_existencia_pasta(lista_de_textos)
+        TextosController.TextosController.verificacao_existencia_pasta(lista_de_textos)
         lista_de_textos = os.path.join('Backend','textos')
 
         caminho_contador = os.path.join('Backend', 'contador.json')
