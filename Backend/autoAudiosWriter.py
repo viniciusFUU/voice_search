@@ -26,13 +26,13 @@ class AutoAudiosWriter:
         counter.counter.contador_zero()
         caminho_contador = os.path.join('Backend', 'contador.json')
 
-        with open(caminho_contador, 'r') as contador:
+        with open(caminho_contador, 'r', encoding='utf-8') as contador:
             contador = json.load(contador)
         
         nome_arquivo = f"arquivo{contador['contador']}"
         print(f"nome do arquivo: {nome_arquivo}")
-        texto = cls.autoAudiosWritter()
-        # texto = "egito"
+        # texto = cls.autoAudiosWritter()
+        texto = "egito"
 
         caminho_completo = os.path.join('Backend', 'textos', f"{nome_arquivo}.txt")
 
@@ -41,7 +41,7 @@ class AutoAudiosWriter:
         
         print("Documento criado com sucesso.")
 
-        with open(caminho_contador, 'w') as arquivo_contador:
+        with open(caminho_contador, 'w', encoding='utf-8') as arquivo_contador:
             contador['contador']+=1
             json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
             print('td certo')

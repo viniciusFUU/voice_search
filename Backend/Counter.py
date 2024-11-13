@@ -9,7 +9,7 @@ class counter:
         lista_de_textos = os.path.join('Backend','textos')
         caminho_contador = os.path.join('Backend', 'contador.json')
         
-        with open(caminho_contador, 'r') as contador:
+        with open(caminho_contador, 'r', encoding='utf-8') as contador:
             contador = json.load(contador)
 
         for arquivo in os.listdir(lista_de_textos):
@@ -19,7 +19,7 @@ class counter:
         if contador_arquivos == 0:
             contador['contador'] = 0
 
-        with open(caminho_contador, 'w') as arquivo_contador:
+        with open(caminho_contador, 'w', encoding='utf-8') as arquivo_contador:
             json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
         
         if contador_arquivos > 0:

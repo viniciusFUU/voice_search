@@ -8,7 +8,7 @@ class Searching:
     def wikipedia_search(cls, arquivo):
         caminho_textos = os.path.join('Backend', 'textos', arquivo)
         
-        with open(caminho_textos, 'r') as busca:
+        with open(caminho_textos, 'r', encoding='utf-8') as busca:
             texto = busca.read().strip()
             
         caminho_pesquisa = os.path.join('Backend', 'Pesquisas')
