@@ -1,4 +1,5 @@
 import os
+import Searching
 
 class Pesquisas_controller:
     lista_de_pesquisas = []
@@ -6,6 +7,7 @@ class Pesquisas_controller:
 
     @classmethod
     def listar_arquivos(cls):
+        Searching.Searching.verificacao_pasta_pesquisa(cls.caminho_pesquisa)
         for pesquisa in os.listdir(cls.caminho_pesquisa):
             if pesquisa.endswith('.txt'):
                 cls.lista_de_pesquisas.append(pesquisa)
