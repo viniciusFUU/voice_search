@@ -1,0 +1,4 @@
+gtts
+playsound
+speech_recognition
+beautifulsoup
