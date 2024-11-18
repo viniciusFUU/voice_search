@@ -51,7 +51,7 @@ class Application:
         def abrir_texto():
             valor_escolhido = combobox.get()  
             if valor_escolhido != "Escolha uma opção":
-                messagebox.showinfo('Conteudo encontrado',PesquisasController.Pesquisas_controller.busca_pesquisa(valor_escolhido))
+                messagebox.showinfo('Conteudo encontrado',PesquisasController.busca_pesquisa(valor_escolhido))
             else:
                 messagebox.showinfo('Erro: ', "Nenhum elemento selecionado")            
 
@@ -81,7 +81,7 @@ class Application:
             else:
                 messagebox.showinfo("Erro: ", "Nenhum elemento selecionado")
 
-        tk.Button(root, text="Escutar audio", command=abrir_audio).grid(row=6, column=1, padx=(130,0), pady=(0,5), ipadx=31)
+        tk.Button(root, text="Clique e escute o audio", command=abrir_audio).grid(row=6, column=1, padx=(130,0), pady=(0,5), ipadx=5)
 
     def funcao_principal_do_projeto_por_audio(self):
         ttk.Label(
@@ -93,7 +93,7 @@ class Application:
                 font=("Times New Roman", 15)
             ).grid(row=7, column=1, padx=(130,0), pady=(10, 0), ipadx=4)
 
-        tk.Button(root, text="Buscar por Audio", command=AutoAudiosWriter.pesquisa_por_voz).grid(row=8, column=1, padx=(130,0), pady=(5,5), ipadx=22)
+        tk.Button(root, text="Clique e fale", command=AutoAudiosWriter.pesquisa_por_voz).grid(row=8, column=1, padx=(130,0), pady=(5,5), ipadx=35)
 
     def funcao_principal_do_projeto_por_texto(self):
         ttk.Label(
@@ -112,6 +112,6 @@ class Application:
             texto = entrada.get()
             AutoAudiosWriter.pesquisa_por_texto(texto)
 
-        tk.Button(root, text="Buscar por Audio", command=busca_por_entrada).grid(row=11, column=1, padx=(130,0), pady=(5,5), ipadx=21)
+        tk.Button(root, text="Clique e busque", command=busca_por_entrada).grid(row=11, column=1, padx=(130,0), pady=(5,5), ipadx=24)
 
 Application()

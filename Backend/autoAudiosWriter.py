@@ -19,12 +19,7 @@ def autoAudiosWritter():
     except sr.RequestError:
         print("API unavailable")
 
-def pesquisa_por_voz():
-    caminho_contador = os.path.join('Backend', 'contador.json')
-
-    with open(caminho_contador, 'r', encoding='utf-8') as contador:
-        contador = json.load(contador)
-    
+def pesquisa_por_voz():    
     texto = autoAudiosWritter()
 
     nome_arquivo = texto
@@ -36,11 +31,6 @@ def pesquisa_por_voz():
         arquivo.write(texto)
     
     print("Documento criado com sucesso.")
-
-    with open(caminho_contador, 'w', encoding='utf-8') as arquivo_contador:
-        contador['contador']+=1
-        json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
-        print('td certo')
 
     wiki_pesquisa = Searching.wikipedia_search(f"{nome_arquivo}.txt")
     wiki_pesquisa = " ".join(wiki_pesquisa)
