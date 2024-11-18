@@ -1,6 +1,6 @@
 import speech_recognition as sr
 import json
-import Counter as counter
+import FolderVerification
 import Searching
 import AudioPlayer as audio_player
 import os
@@ -20,7 +20,6 @@ def autoAudiosWritter():
         print("API unavailable")
 
 def pesquisa_por_voz():
-    counter.contador_zero()
     caminho_contador = os.path.join('Backend', 'contador.json')
 
     with open(caminho_contador, 'r', encoding='utf-8') as contador:
@@ -47,15 +46,11 @@ def pesquisa_por_voz():
     wiki_pesquisa = " ".join(wiki_pesquisa)
     audio_player.gerar_e_reproduzir_audio(nome_arquivo, wiki_pesquisa)
 
-def pesquisa_por_texto(texto):
-    counter.contador_zero()
-    caminho_contador = os.path.join('Backend', 'contador.json')
-
-    with open(caminho_contador, 'r', encoding='utf-8') as contador:
-        contador = json.load(contador)
-    
+def pesquisa_por_texto(texto):    
     nome_arquivo = texto
-    print(f"nome do arquivo: {nome_arquivo}")
+
+    caminho_pasta = os.path.join('Backend', 'Textos')
+    FolderVerification.varificacao_pastas(caminho_pasta)
 
     caminho_completo = os.path.join('Backend', 'textos', f"{nome_arquivo}.txt")
 
@@ -63,11 +58,6 @@ def pesquisa_por_texto(texto):
         arquivo.write(texto)
     
     print("Documento criado com sucesso.")
-
-    with open(caminho_contador, 'w', encoding='utf-8') as arquivo_contador:
-        contador['contador']+=1
-        json.dump(contador, arquivo_contador, ensure_ascii=False, indent=4)
-        print('td certo')
 
     wiki_pesquisa = Searching.wikipedia_search(f"{nome_arquivo}.txt")
     wiki_pesquisa = " ".join(wiki_pesquisa)

@@ -1,11 +1,12 @@
 import os
-import Searching
+import FolderVerification
 
 lista_de_pesquisas = []
 caminho_pesquisa = os.path.join('Backend', 'Pesquisas')
 
 def listar_arquivos():
-    Searching.verificacao_pasta_pesquisa(caminho_pesquisa)
+    FolderVerification.varificacao_pastas(caminho_pesquisa)
+    
     for pesquisa in os.listdir(caminho_pesquisa):
         if pesquisa.endswith('.txt'):
             lista_de_pesquisas.append(pesquisa)
