@@ -13,7 +13,3 @@ def gerar_e_reproduzir_audio(nome_arquivo, texto):
 @staticmethod
 def reproduzir_audio(nome_arquivo):
     playsound(os.path.join('Backend', 'audios', nome_arquivo))
-
-def verificacao_pasta_audios(caminho):
-    if not os.path.exists(caminho):
-        os.mkdir(caminho)
