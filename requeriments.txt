@@ -1,4 +1,7 @@
+----- EXECUTE O PIP INSTALL DAS SEGUINTES BIBLIOTECAS -----
+
 gtts
 playsound
 speech_recognition
 beautifulsoup
+google-search
