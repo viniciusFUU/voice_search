@@ -10,7 +10,8 @@ import PesquisasController, AudiosController, AudioPlayer, AutoAudiosWriter
 root = tk.Tk()
 
 class Application:    
-    opcoes = PesquisasController.listar_arquivos()
+    opcoesTexto = PesquisasController.listar_arquivos()
+    opcoesAudios = AudiosController.adc_audios_lista()
     
     def __init__(self):
         self.tela()
@@ -28,8 +29,8 @@ class Application:
 
         root.geometry(f"{largura}x{altura}+{posicao_x}+{posicao_y}")
 
-        self.combo_box_textos(self.opcoes)
-        self.combo_box_audios()
+        self.combo_box_textos(self.opcoesTexto)
+        self.combo_box_audios(self.opcoesAudios)
         self.funcao_principal_do_projeto_por_audio()
         self.funcao_principal_do_projeto_por_texto()
 
@@ -56,7 +57,7 @@ class Application:
 
         tk.Button(root, text="Abrir texto", command=abrir_texto).grid(row=3, column=1, padx=(130,0), pady=(0,5), ipadx=38)
 
-    def combo_box_audios(self):
+    def combo_box_audios(self, op):
         ttk.Label(
                 root, 
                 text = "Audios",
@@ -64,11 +65,9 @@ class Application:
                 background = '#157a8c', 
                 foreground ="white",  
                 font = ("Times New Roman", 15)
-                ).grid(row = 4, column = 1, padx=(130,0), pady=(5, 0), ipadx=41) 
-        
-        opcoes = AudiosController.adc_audios_lista()
+                ).grid(row = 4, column = 1, padx=(130,0), pady=(5, 0), ipadx=41)
 
-        combobox = ttk.Combobox(root, values=opcoes)
+        combobox = ttk.Combobox(root, values=op)
         combobox.set("Escolha uma opção")
         combobox.grid(row=5, column=1, padx=(130,0), pady=5)
 
@@ -91,8 +90,14 @@ class Application:
                 foreground='white',
                 font=("Times New Roman", 15)
             ).grid(row=7, column=1, padx=(130,0), pady=(10, 0), ipadx=4)
+        
+        def executar():
+            AutoAudiosWriter.pesquisa_por_voz()
+            self.atualizar_combo_box_audios()
+            self.atualizar_combo_box_textos()
 
-        tk.Button(root, text="Clique e fale", command=AutoAudiosWriter.pesquisa_por_voz).grid(row=8, column=1, padx=(130,0), pady=(5,5), ipadx=35)
+
+        tk.Button(root, text="Clique e fale", command=executar).grid(row=8, column=1, padx=(130,0), pady=(5,5), ipadx=35)
 
     def funcao_principal_do_projeto_por_texto(self):
         ttk.Label(
@@ -111,13 +116,20 @@ class Application:
             texto = entrada.get()
             AutoAudiosWriter.pesquisa_por_texto(texto)
             self.atualizar_combo_box_textos()
+            self.atualizar_combo_box_audios()
 
         tk.Button(root, text="Clique e busque", command=busca_por_entrada).grid(row=11, column=1, padx=(130,0), pady=(5,5), ipadx=24)
     
+    def atualizar_combo_box_audios(self):
+        self.opcoesAudios = []
+        self.combo_box_audios(self.opcoesAudios)
+        self.opcoesAudios = AudiosController.adc_audios_lista()
+        self.combo_box_audios(self.opcoesAudios)
+    
     def atualizar_combo_box_textos(self):
-        self.opcoes = []
-        self.combo_box_textos(self.opcoes)
-        self.opcoes = PesquisasController.listar_arquivos()
-        self.combo_box_textos(self.opcoes)
+        self.opcoesTexto = []
+        self.combo_box_textos(self.opcoesTexto)
+        self.opcoesTexto = PesquisasController.listar_arquivos()
+        self.combo_box_textos(self.opcoesTexto)
 
 Application()
