@@ -28,14 +28,12 @@ class Application:
 
         root.geometry(f"{largura}x{altura}+{posicao_x}+{posicao_y}")
 
-        self.combo_box_textos()
+        self.combo_box_textos(self.opcoes)
         self.combo_box_audios()
         self.funcao_principal_do_projeto_por_audio()
         self.funcao_principal_do_projeto_por_texto()
 
-    def combo_box_textos(self, op=opcoes):
-        combo_opcoes = op
-
+    def combo_box_textos(self, op):
         ttk.Label(
                 root, 
                 text = "Pesquisas",
@@ -45,7 +43,7 @@ class Application:
                 font = ("Times New Roman", 15)
                 ).grid(row = 1, column = 1, padx=(130,0), pady=(10, 0), ipadx=31) 
 
-        combobox = ttk.Combobox(root, values=combo_opcoes)
+        combobox = ttk.Combobox(root, values=op)
         combobox.set("Escolha uma opção")
         combobox.grid(row=2, column=1, padx=(130,0), pady=5)
 
@@ -117,6 +115,8 @@ class Application:
         tk.Button(root, text="Clique e busque", command=busca_por_entrada).grid(row=11, column=1, padx=(130,0), pady=(5,5), ipadx=24)
     
     def atualizar_combo_box_textos(self):
+        self.opcoes = []
+        self.combo_box_textos(self.opcoes)
         self.opcoes = PesquisasController.listar_arquivos()
         self.combo_box_textos(self.opcoes)
 
