@@ -1,10 +1,10 @@
 import os
 import FolderVerification
 
-lista_de_pesquisas = []
 caminho_pesquisa = os.path.join('Backend', 'Pesquisas')
 
 def listar_arquivos():
+    lista_de_pesquisas = []
     FolderVerification.varificacao_pastas(caminho_pesquisa)
     
     for pesquisa in os.listdir(caminho_pesquisa):
