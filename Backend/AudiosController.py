@@ -1,9 +1,9 @@
 import os
 import FolderVerification
 
-lista_de_audios = []
 
 def adc_audios_lista():
+    lista_de_audios = []
     pasta_audios = os.path.join('Backend','audios')
 
     FolderVerification.varificacao_pastas(pasta_audios)
