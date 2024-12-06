@@ -7,7 +7,7 @@
 <hr>
 
 ### Portal onde a busca é feita:
-<p>Atualmente a busca é feita diretamente no site do wikipedia, retornando pesquisas confiáveis a cada pesquisa. 
+<p>Atualmente a busca é feita diretamente no site do wikipedia, retornando informações confiáveis a cada pesquisa. 
 </p>
 <p>Nas próximas versões do projeto, penso em trazer outras opções para deixar as pesquisas melhores e com o acesso simplificado possível.</p>
 <hr>
